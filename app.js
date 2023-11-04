@@ -8,6 +8,7 @@ const cors = require("cors");
 const streamToBuffer = require('stream-to-buffer');
 const { PDFDocument } = require('pdf-lib');
 const { readFile, writeFile } = require('fs').promises;
+const axios = require('axios');
 // var open = require("open");
 
 const openai = new OpenAI({
@@ -47,7 +48,7 @@ app.post("/logo",(req,res) => {
           method: 'POST',
           headers: {
             'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': 'b15912910emsh5e91346d18e1dbep1ae0fejsne917d34536d5',
+            'X-RapidAPI-Key': 'cdae9d0a7amshb759c9e7f1a2fcdp1eca8fjsn6a7b5a6f27bb',
             'X-RapidAPI-Host': 'open-ai21.p.rapidapi.com'
           },
           body: new URLSearchParams({ text: "Generate unique and appealing logo concepts for a company that specializes in "+company+" and offers "+product+". The logo should reflect the company's identity and the products it deals with."
