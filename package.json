@@ -16,6 +16,7 @@
     "mongoose": "^8.0.0",
     "node": "^21.1.0",
     "node-fetch": "^3.3.2",
+    "open": "^9.1.0",
     "openai": "^4.14.2",
     "path": "^0.12.7",
     "stream-to-buffer": "^0.1.0"
