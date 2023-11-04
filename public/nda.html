@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="agreement.css" />
+    
+  </head>
+  <body>
+    <section class="container">
+      <header>Non-Disclosure Agreement</header>
+      <form action="/fill3" method="post" class="form" >
+
+        <div class="input-box">
+            <label>Signing Date</label>
+            <input type="date" id="name1" name="name1" placeholder="Enter Date of signing of agreement " required />
+          </div>
+          
+        <div class="input-box">
+          <label>Name of Disclosing Party</label>
+          <input type="text" id="name2" name="name2" placeholder="Enter Name of the Organization of the disclosing party" required />
+        </div>
+
+        <div class="input-box address">
+          <label>Address of disclosing party</label>
+          <input type="text" id="name3" name="name3" placeholder="Enter Address of the disclosing party" required />
+        </div>
+
+        <div class="input-box">
+            <label>Name of Receiving Party</label>
+            <input type="text" id="name4" name="name4" placeholder="Enter Name of the Organization of the receiving party" required />
+          </div>
+
+          <div class="input-box address">
+            <label>Address of receiving party</label>
+            <input type="text" id="name5" name="name5" placeholder="Enter Address of the receiving party" required />
+          </div>
+
+          <div class="input-box address">
+            <label>Transaction done between both parties</label>
+            <input type="text" id="name6" name="name6" placeholder="State the transaction that is being done between both parties" required />
+          </div>
+
+          <div class="input-box address">
+            <label>Name of State for the above transaction</label>
+            <input type="text" id="name7" name="name7" placeholder="Name of state in which the above transaction taking place" required />
+          </div>
+        </div>
+        <button type="submit" id="submitBtn">Submit</button>
+      </form>
+      <form action="/download3" method="get" class="form">
+        <button type="submit" id="downloadBtn" class="hidden">Download</button>
+      </form>
+    </section>
+    
+  </body>
+</html>
