@@ -1,0 +1,14 @@
+.vertical-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* You can add more CSS styles for form elements as needed */
+.vertical-form input,
+.vertical-form textarea,
+.vertical-form button {
+    margin: 5px; /* Add some space between form elements */
+}
