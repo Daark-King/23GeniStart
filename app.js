@@ -6,9 +6,10 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const streamToBuffer = require('stream-to-buffer');
+// var open = require("open");
 
 const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "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",
 });
   
 import("node-fetch").then((nodeFetch) => {
@@ -52,7 +53,6 @@ app.post("/logo",(req,res) => {
           const imageUrl = resultObject.url;
 
           res.send(imageUrl);
-
         } catch (error) {
           console.error(error);
         }
@@ -80,7 +80,6 @@ app.post("/advertise", (req, res) => {
         
         var data = chatCompletion.choices[0].message.content;
 
-        console.log(data);
         res.send(data);
     };
 
