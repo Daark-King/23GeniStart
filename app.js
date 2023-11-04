@@ -6,6 +6,8 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const streamToBuffer = require('stream-to-buffer');
+const { PDFDocument } = require('pdf-lib');
+const { readFile, writeFile } = require('fs').promises;
 // var open = require("open");
 
 const openai = new OpenAI({
@@ -15,6 +17,14 @@ const openai = new OpenAI({
 import("node-fetch").then((nodeFetch) => {
     const fetch = nodeFetch.default;
 });
+
+mongoose.connect("mongodb://localhost:27017/SIHDB", {});
+
+const imageUrlSchema = new mongoose.Schema({
+    url: String,
+});
+
+const ImageUrl = mongoose.model('ImageUrl', imageUrlSchema);
 
 const app = express();
 
@@ -52,7 +62,9 @@ app.post("/logo",(req,res) => {
 
           const imageUrl = resultObject.url;
 
-          res.send(imageUrl);
+          const encodedImageUrl = encodeURIComponent(imageUrl);
+          res.send(`<img src="${encodedImageUrl}" alt="Image" />`);
+
         } catch (error) {
           console.error(error);
         }
@@ -86,6 +98,70 @@ app.post("/advertise", (req, res) => {
     fun(advertise);
 });
 
+app.post("/nda",(req,res)=>{
+    res.sendFile("/public/nda.html", { root: __dirname });
+});
+
+app.post("/fill3",(req,res)=>{
+    const name1 = req.body.name1;
+    const name2 = req.body.name2;
+    const name3 = req.body.name3;
+    const name4 = req.body.name4;
+    const name5 = req.body.name5;
+    const name6 = req.body.name6;
+    const name7 = req.body.name7;
+  
+    async function createPdf(input, output, data) {
+      try {
+        const pdfDoc = await PDFDocument.load(await readFile(input));
+        const form = pdfDoc.getForm();
+        const nf = 7;
+      
+        for (let i = 1; i <= nf; i++) {
+          form.getTextField(i.toString()).setText(data['name' + i]);
+        }
+  
+        const pdfBytes = await pdfDoc.save();
+    
+        await writeFile(output, pdfBytes);
+        console.log('PDF created!');
+      } catch (err) {
+        console.log(err);
+        throw err;
+      }
+    }
+  
+    try {
+      const outputPdfBuffer = createPdf('NDA.pdf', 'output3.pdf', {
+        name1,
+        name2,
+        name3,
+        name4,
+        name5,
+        name6,
+        name7,
+      });
+  
+      res.status(200).send('PDF created successfully');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('PDF creation failed');
+    }
+  
+});
+
+app.get("/download3",(req,res)=>{
+    const filePath = path.join(__dirname, '/', 'output3.pdf');
+    res.download(filePath, (err) => {
+      if (err) {
+        // Handle errors, such as file not found
+        console.error(`Error downloading the file: ${err.message}`);
+        res.status(404).send('File not found');
+      } else {
+        console.log('File downloaded successfully');
+      }
+    });
+});
 
 
 app.listen(3000, () => {
