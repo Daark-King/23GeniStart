@@ -106,7 +106,7 @@ app.post("/compete",(req,res) => {
         const options = {
           method: 'GET',
           headers: {
-            'X-RapidAPI-Key': '8704540e34msh61ac02b53026e01p1b528ejsn6b996abba677',
+            'X-RapidAPI-Key': '9e6a34cc1emsh21eeff14139a23ep1752d6jsn248704f7a970',
             'X-RapidAPI-Host': 'google-maps-data1.p.rapidapi.com'
           }
         };
@@ -114,11 +114,11 @@ app.post("/compete",(req,res) => {
         try {
           const response = await fetch(url, options);
           const data = await response.json();
-          
+
           const items = data.result;
       
           items.forEach(function(item) {
-              res.write(`Title : ${item.title}, Contact : ${item.contact.phone}, Description : ${item.description}`+"\n");
+              res.write(`Title : ${item.title}, Contact : ${item.contact.phone}, Description : ${item.description}, Url : ${item.images.thumbnail}`+"\n");
           })
 
           res.end();
