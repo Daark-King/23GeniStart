@@ -12,7 +12,7 @@ const axios = require('axios');
 // var open = require("open");
 
 const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "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",
 });
   
 import("node-fetch").then((nodeFetch) => {
@@ -48,7 +48,7 @@ app.post("/logo",(req,res) => {
           method: 'POST',
           headers: {
             'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': 'cdae9d0a7amshb759c9e7f1a2fcdp1eca8fjsn6a7b5a6f27bb',
+            'X-RapidAPI-Key': 'c227578f59msh383e536786f97dcp153cebjsnf77e8f539ebd',
             'X-RapidAPI-Host': 'open-ai21.p.rapidapi.com'
           },
           body: new URLSearchParams({ text: "Generate unique and appealing logo concepts for a company that specializes in "+company+" and offers "+product+". The logo should reflect the company's identity and the products it deals with."
@@ -61,9 +61,9 @@ app.post("/logo",(req,res) => {
 
           const resultObject = JSON.parse(result);
 
-          const imageUrl = resultObject.url;
+          const imgurl = resultObject.url;
 
-          res.send(imageUrl);
+          res.send(imgurl);
 
         } catch (error) {
           console.error(error);
@@ -106,7 +106,7 @@ app.post("/compete",(req,res) => {
         const options = {
           method: 'GET',
           headers: {
-            'X-RapidAPI-Key': '9e6a34cc1emsh21eeff14139a23ep1752d6jsn248704f7a970',
+            'X-RapidAPI-Key': 'c227578f59msh383e536786f97dcp153cebjsnf77e8f539ebd',
             'X-RapidAPI-Host': 'google-maps-data1.p.rapidapi.com'
           }
         };
